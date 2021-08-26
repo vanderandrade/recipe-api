@@ -1,11 +1,10 @@
 from flask import Flask
+from apis.healthcheck import healthcheck_blueprint
 
 def create_app(app_name='recipe'):
     app = Flask(app_name)
 
-    @app.route('/')
-    def healthcheck():
-        return 'OK', 200
+    app.register_blueprint(healthcheck_blueprint)
 
     return app
 
